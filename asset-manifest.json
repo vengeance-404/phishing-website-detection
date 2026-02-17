@@ -1,15 +1,15 @@
 {
   "files": {
     "main.css": "/phishing-website-detection/static/css/main.e1f61259.css",
-    "main.js": "/phishing-website-detection/static/js/main.c29ede8d.js",
+    "main.js": "/phishing-website-detection/static/js/main.daeb4204.js",
     "static/js/453.1d72c5f7.chunk.js": "/phishing-website-detection/static/js/453.1d72c5f7.chunk.js",
     "index.html": "/phishing-website-detection/index.html",
     "main.e1f61259.css.map": "/phishing-website-detection/static/css/main.e1f61259.css.map",
-    "main.c29ede8d.js.map": "/phishing-website-detection/static/js/main.c29ede8d.js.map",
+    "main.daeb4204.js.map": "/phishing-website-detection/static/js/main.daeb4204.js.map",
     "453.1d72c5f7.chunk.js.map": "/phishing-website-detection/static/js/453.1d72c5f7.chunk.js.map"
   },
   "entrypoints": [
     "static/css/main.e1f61259.css",
-    "static/js/main.c29ede8d.js"
+    "static/js/main.daeb4204.js"
   ]
 }
