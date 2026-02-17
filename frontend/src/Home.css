@@ -1,4 +1,4 @@
-/* Home.css */
+
 .home-container {
   min-height: 100vh;
   position: relative;
@@ -8,18 +8,20 @@
   justify-content: center;
   color: white;
   overflow-x: hidden;
+  width: 100%;
 }
 
 .content-wrapper {
   position: relative;
-  z-index: 10; /* Above background */
+  z-index: 10;
   text-align: center;
   max-width: 1200px;
   width: 100%;
   padding: 20px;
+  box-sizing: border-box;
 }
 
-/* --- Hero Section --- */
+
 .hero-section {
   margin-bottom: 80px;
 }
@@ -31,10 +33,10 @@
   letter-spacing: 1px;
 }
 
-/* Glitch Effect Title */
 .glitch-wrapper {
   display: inline-block;
   margin-bottom: 20px;
+  max-width: 100%;
 }
 
 .glitch {
@@ -45,6 +47,7 @@
   position: relative;
   color: var(--primary);
   letter-spacing: 4px;
+  word-wrap: break-word;
 }
 
 .glitch::before, .glitch::after {
@@ -78,7 +81,7 @@
   100% { clip: rect(70px, 9999px, 90px, 0); }
 }
 
-/* CTA Button */
+
 .cta-btn {
   padding: 15px 40px;
   font-size: 1.2rem;
@@ -99,12 +102,14 @@
   color: black;
 }
 
-/* --- Features Grid --- */
+
 .features-grid {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
   gap: 30px;
-  padding: 0 20px;
+  padding: 0 10px;
+  width: 100%;
+  box-sizing: border-box;
 }
 
 .feature-card {
@@ -136,4 +141,36 @@
 .feature-card p {
   color: var(--text-dim);
   line-height: 1.6;
+}
+
+@media (max-width: 768px) {
+  .home-container {
+    justify-content: flex-start; 
+    padding-top: 40px;
+    height: auto;
+  }
+
+  .glitch {
+    font-size: 2.5rem;
+    letter-spacing: 2px;
+  }
+
+  .subtitle {
+    font-size: 1rem;
+    padding: 0 10px;
+  }
+
+  .features-grid {
+    grid-template-columns: 1fr;
+    gap: 20px;
+    padding: 0;
+  }
+
+  .hero-section {
+    margin-bottom: 50px;
+  }
+  
+  .feature-card {
+    padding: 20px;
+  }
 }
