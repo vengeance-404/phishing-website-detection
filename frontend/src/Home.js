@@ -11,13 +11,15 @@ const Home = () => {
 
   return (
     <div className="home-container">
-  
-      <Suspense fallback={<div style={{ position: 'absolute', inset: 0, background: '#0a192f' }} />}>
-        <ParticlesBackground />
-      </Suspense>
+      
+      {/* FIXED BACKGROUND: Won't move when you scroll */}
+      <div className="background-wrapper">
+        <Suspense fallback={<div style={{ width: '100%', height: '100%', background: '#0a192f' }} />}>
+          <ParticlesBackground />
+        </Suspense>
+      </div>
 
       <div className="content-wrapper">
-        
         <motion.div 
           className="hero-section"
           initial={{ opacity: 0, y: -50 }}
@@ -69,9 +71,10 @@ const Home = () => {
 const FeatureCard = ({ icon, title, desc, delay }) => (
   <motion.div 
     className="feature-card"
-    initial={{ opacity: 0, y: 30 }}
-    animate={{ opacity: 1, y: 0 }}
-    transition={{ delay: delay, duration: 0.6 }}
+    initial={{ opacity: 0, y: 50 }}
+    whileInView={{ opacity: 1, y: 0 }}
+    viewport={{ once: true, margin: "-50px" }}
+    transition={{ delay: delay, duration: 0.5 }}
   >
     <div className="card-icon">{icon}</div>
     <h3>{title}</h3>
