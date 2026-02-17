@@ -7,10 +7,17 @@ const ParticlesBackground = () => {
     const canvas = canvasRef.current;
     const ctx = canvas.getContext('2d');
     let animationFrameId;
-    canvas.width = window.innerWidth;
-    canvas.height = window.innerHeight;
+
+    const handleResize = () => {
+      canvas.width = window.innerWidth;
+      canvas.height = window.innerHeight;
+    };
+    handleResize();
+
     const isMobile = window.innerWidth < 768;
-    const fontSize = isMobile ? 24 : 14;
+    
+    const fontSize = isMobile ? 16 : 14; 
+    
     const columns = Math.floor(canvas.width / fontSize);
     
     const drops = [];
@@ -29,7 +36,8 @@ const ParticlesBackground = () => {
     const charArray = chars.split("");
 
     const draw = () => {
-      ctx.fillStyle = isMobile ? 'rgba(0, 4, 40, 0.4)' : 'rgba(0, 4, 40, 0.1)'; 
+
+      ctx.fillStyle = isMobile ? 'rgba(0, 4, 40, 0.3)' : 'rgba(0, 4, 40, 0.1)'; 
       ctx.fillRect(0, 0, canvas.width, canvas.height);
 
       ctx.font = `${fontSize}px monospace`;
@@ -54,8 +62,7 @@ const ParticlesBackground = () => {
         if (drops[i] * fontSize > canvas.height && Math.random() > 0.98) {
           drops[i] = 0;
         }
-
-        const velocity = isHovered ? 0.5 : (isMobile ? 0.1 : 0.15);
+        const velocity = isHovered ? 0.5 : (isMobile ? 0.2 : 0.15);
         drops[i] += velocity;
       }
     };
@@ -66,7 +73,6 @@ const ParticlesBackground = () => {
 
     const animate = (timeStamp) => {
       animationFrameId = requestAnimationFrame(animate);
-
       const deltaTime = timeStamp - lastTime;
 
       if (deltaTime > interval) {
@@ -74,23 +80,14 @@ const ParticlesBackground = () => {
         draw();
       }
     };
-    const timeoutId = setTimeout(() => {
-      animate(0);
-    }, 2000);
 
-    const handleResize = () => {
-      canvas.width = window.innerWidth;
-      canvas.height = window.innerHeight;
-    };
-
+    animate(0);
     window.addEventListener('resize', handleResize);
-    animate();
 
     return () => {
       window.removeEventListener('resize', handleResize);
       window.removeEventListener('mousemove', handleMouseMove);
       cancelAnimationFrame(animationFrameId);
-      clearTimeout(timeoutId);
     };
   }, []);
 
